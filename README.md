@@ -1,6 +1,6 @@
 # Fisqos - Gerçek Zamanlı İletişim Platformu
 
-Fisqos, Discord benzeri bir gerçek zamanlı iletişim platformudur. Kullanıcılar gruplar oluşturabilir, metin ve ses kanalları ekleyebilir, dosya paylaşabilir ve arkadaşlarıyla doğrudan mesajlaşabilir.
+Fisqos, Discord benzeri bir gerçek zamanlı iletişim platformudur. Kullanıcılar gruplar oluşturabilir, metin ve ses kanalları ekleyebilir, dosya paylaşabilir ve arkadaşlarıyla doğrudan mesajlaşabilir. Hem web hem de mobil platformlarda kullanılabilir.
 
 ## Özellikler
 
@@ -23,9 +23,12 @@ Fisqos, Discord benzeri bir gerçek zamanlı iletişim platformudur. Kullanıcı
 - **Veritabanı**: MongoDB (Mongoose)
 - **Gerçek Zamanlı İletişim**: Socket.IO
 - **Medya Akışı**: Mediasoup (WebRTC SFU)
-- **Frontend**: HTML, CSS, JavaScript
+- **Web Frontend**: HTML, CSS, JavaScript
+- **Mobil Uygulama**: React Native, TypeScript
 
 ## Proje Yapısı
+
+### Backend
 
 ```
 fisqos/
@@ -65,9 +68,37 @@ fisqos/
 └── tsconfig.json          # TypeScript derleyici ayarları
 ```
 
+### Mobil Uygulama
+
+```
+FisqosApp/
+├── __mocks__/             # Jest mock dosyaları
+├── __tests__/             # Test dosyaları
+├── android/               # Android platformu dosyaları
+├── ios/                   # iOS platformu dosyaları
+├── src/                   # Kaynak kodlar
+│   ├── components/        # Yeniden kullanılabilir bileşenler
+│   ├── contexts/          # React Context API dosyaları
+│   ├── i18n/              # Çoklu dil desteği
+│   ├── navigation/        # React Navigation yapılandırması
+│   ├── screens/           # Uygulama ekranları
+│   ├── services/          # API ve diğer servisler
+│   ├── theme/             # Tema ve stil dosyaları
+│   └── utils/             # Yardımcı fonksiyonlar
+├── .eslintrc.js           # ESLint yapılandırması
+├── .prettierrc.js         # Prettier yapılandırması
+├── App.tsx                # Ana uygulama bileşeni
+├── babel.config.js        # Babel yapılandırması
+├── index.js               # Uygulama giriş noktası
+├── jest.config.js         # Jest test yapılandırması
+├── metro.config.js        # Metro bundler yapılandırması
+├── package.json           # Proje bağımlılıkları
+└── tsconfig.json          # TypeScript derleyici ayarları
+```
+
 ## Kurulum
 
-### Yerel Geliştirme
+### Backend - Yerel Geliştirme
 
 1. Gerekli paketleri yükleyin:
    ```
@@ -96,7 +127,29 @@ fisqos/
    npm start
    ```
 
-### Render.com Dağıtımı
+### Mobil Uygulama - Yerel Geliştirme
+
+1. Gerekli paketleri yükleyin:
+   ```bash
+   cd FisqosApp
+   npm install
+   ```
+
+2. iOS için pod'ları yükleyin (macOS gereklidir):
+   ```bash
+   cd ios && pod install && cd ..
+   ```
+
+3. Uygulamayı çalıştırın:
+   ```bash
+   # Android için
+   npm run android
+
+   # iOS için
+   npm run ios
+   ```
+
+### Backend - Render.com Dağıtımı
 
 1. GitHub deposunu Render.com'a bağlayın
 
